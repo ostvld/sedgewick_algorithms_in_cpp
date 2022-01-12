@@ -12,7 +12,7 @@ class Item
 		void print(std::shared_ptr <std::string> log);
 
 	protected:
-
+		/// Имя экземпляра
 		std::string name_;
 };
 }

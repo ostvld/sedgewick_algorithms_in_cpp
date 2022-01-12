@@ -61,10 +61,10 @@ echo "./coverage found."
 fi
 
 
-pipenv run gcovr -r . --filter 'server/' --filter 'client/' --html-details -o ./coverage/report.html
+#pipenv run gcovr -r . --filter 'server/' --filter 'client/' --html-details -o ./coverage/report.html
 
-firefox ./coverage/report.html &
-firefox ./doc/html/index.html &
+#firefox ./coverage/report.html &
+xdg-open ./doc/html/index.html &
 # lcov --external --remove test.info "/usr*" "*include/gtest*" "*/src/gtest*" -o test.info -d . > lcov.log
 
 # echo "lcov done"

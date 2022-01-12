@@ -12,7 +12,7 @@ using std::shared_ptr;
 	{
 	}
 
-	void RecursiveParser::direct(std::shared_ptr<Node> link, int space)
+	void RecursiveParser::pre_order(std::shared_ptr<Node> link, int space)
 	{
 		if(!link)
 		{
@@ -28,11 +28,11 @@ using std::shared_ptr;
 //		}
 		link->visit(log);
 		++space;
-		direct(link->left(),space);
-		direct(link->right(),space);
+		pre_order(link->left(),space);
+		pre_order(link->right(),space);
 	}
 
-	void RecursiveParser::traverse(std::shared_ptr<Node> link, int space)
+	void RecursiveParser::in_order(std::shared_ptr<Node> link, int space)
 	{
 		if(!link)
 		{
@@ -47,12 +47,12 @@ using std::shared_ptr;
 			//					log->append("+");
 		}
 		++space;
-		traverse(link->left(),space);
+		in_order(link->left(),space);
 		link->visit(log);
-		traverse(link->right(),space);
+		in_order(link->right(),space);
 	}
 
-	void RecursiveParser::reversive(std::shared_ptr<Node> link, int space)
+	void RecursiveParser::post_order(std::shared_ptr<Node> link, int space)
 	{
 		if(!link)
 		{
@@ -67,8 +67,8 @@ using std::shared_ptr;
 //			log->append("+");
 		}
 		++space;
-		reversive(link->left(),space);
-		reversive(link->right(),space);
+		post_order(link->left(),space);
+		post_order(link->right(),space);
 		link->visit(log);
 	}
 

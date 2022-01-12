@@ -13,11 +13,11 @@ namespace Server {
 			NoRecursiveParser();
 			virtual ~NoRecursiveParser() override = default;
 			/// Прямой обход: узел, левое поддерево, правое поддерево
-			virtual void direct(std::shared_ptr <Node> link, int space) override ;
+			virtual void pre_order(std::shared_ptr <Node> link, int space) override ;
 			/// Поперечный обход: левое дерево, узел, правое дерево
-			virtual void traverse(std::shared_ptr <Node> link, int space) override;
+			virtual void in_order(std::shared_ptr <Node> link, int space) override;
 			/// Обратный обход: левое поддерево, правое поддерево, узел
-			virtual void reversive(std::shared_ptr <Node> link, int space) override;
+			virtual void post_order(std::shared_ptr <Node> link, int space) override;
 			/// Обход по уровням
 			void levels(std::shared_ptr <Node> link, int space);
 			/// Отображение дерева в строку

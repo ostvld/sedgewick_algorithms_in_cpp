@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-TEST(RecursiveParser, traverse)
+TEST(RecursiveParser, in_order)
 {
 	//    arrange
 	auto lA3= std::make_shared <Server::Node>("\n+++A");
@@ -20,13 +20,13 @@ TEST(RecursiveParser, traverse)
 	auto parser = Server::RecursiveParser();
 	auto etalon = std::make_shared<std::string>("\n+++A\n++B\n+++C\n+DE\n++F\n+++G\n+H");
 	//    act
-	parser.traverse(root,0);
+	parser.in_order(root,0);
 	auto log = parser.Log();
 	//    assert
 	EXPECT_EQ(*log,*etalon);
 }
 
-TEST(RecursiveParser, direct)
+TEST(RecursiveParser, pre_order)
 {
 	//    arrange
 	auto right2 = std::make_shared <Server::Node>("\n+++C");
@@ -40,13 +40,13 @@ TEST(RecursiveParser, direct)
 	auto parser = Server::RecursiveParser();
 	auto etalon = std::make_shared<std::string>("E\n+D\n++B\n+++A\n+++C\n+H\n++F\n+++G");
 	//    act
-	parser.direct(root,0);
+	parser.pre_order(root,0);
 	auto log = parser.Log();
 	//    assert
 	EXPECT_EQ(*log,*etalon);
 }
 
-TEST(RecursiveParser, reversive)
+TEST(RecursiveParser, post_order)
 {
 	//    arrange
 	auto lA3= std::make_shared <Server::Node>("\n+++A");
@@ -60,7 +60,7 @@ TEST(RecursiveParser, reversive)
 	auto parser = Server::RecursiveParser();
 	auto etalon = std::make_shared<std::string>("\n+++A\n+++C\n++B\n+D\n+++G\n++F\n+HE");
 	//    act
-	parser.reversive(root,0);
+	parser.post_order(root,0);
 	auto log = parser.Log();
 	//    assert
 	EXPECT_EQ(*log,*etalon);

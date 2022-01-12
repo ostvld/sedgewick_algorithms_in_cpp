@@ -10,7 +10,7 @@ NoRecursiveParser::NoRecursiveParser(): AParser()
 {
 }
 
-void NoRecursiveParser::direct(std::shared_ptr<Node> link, int space)
+void NoRecursiveParser::pre_order(std::shared_ptr<Node> link, int space)
 {
 	auto tmp = link;
 	auto s = std::make_shared<std::stack<shared_ptr<Node>>>();
@@ -24,13 +24,45 @@ void NoRecursiveParser::direct(std::shared_ptr<Node> link, int space)
 	}
 }
 
-void NoRecursiveParser::traverse(std::shared_ptr<Node> link, int space)
+void NoRecursiveParser::in_order(std::shared_ptr<Node> link, int space)
 {
+	auto tmp = link;
+	auto s = std::make_shared<std::stack<shared_ptr<Node>>>();
+	while ( !s->empty() || tmp) {
+		if (tmp) {
+			s->push(tmp);
+			tmp = tmp->left();
+		} else {
+			tmp = s->top();
+			s->pop();
+			tmp->visit(log);
+			tmp = tmp->right();
+		}
+	}
 }
 
-void NoRecursiveParser::reversive(std::shared_ptr<Node> link, int space)
+void NoRecursiveParser::post_order(shared_ptr<Node> link, int space)
 {
+	auto tmp = link;
+	auto s = std::make_shared<std::stack<shared_ptr<Node>>>();
+	shared_ptr <Node> lnp = nullptr;
+	shared_ptr<Node> peekn = nullptr;
 
+	while (! s->empty() || tmp) {
+		if (tmp) {
+			s->push(tmp);
+			tmp = tmp->left();
+		} else {
+			peekn = s->top();
+			if (peekn->right() && lnp != peekn->right()) {
+				tmp = peekn->right();
+			} else {
+				s->pop();
+				peekn->visit(log);
+				lnp = peekn;
+			}
+		}
+	}
 }
 
 void NoRecursiveParser::levels(std::shared_ptr<Node> link, int space)

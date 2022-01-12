@@ -15,6 +15,8 @@ set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 find_package( Threads )
 include_directories(./inc)
 set (HEADERS
+	inc/tcpServer.h
+	inc/respondent.h
 	inc/item.h
 	inc/node.h
 	inc/aparser.h
@@ -23,6 +25,8 @@ set (HEADERS
 )
 
 set (SOURCE
+	src/tcpServer.cpp
+	src/respondent.cpp
 	src/item.cpp
 	src/node.cpp
 	src/aparser.cpp
