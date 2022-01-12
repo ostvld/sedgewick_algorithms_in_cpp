@@ -10,6 +10,6 @@ git submodule init && git submodule update
 
 2 Сборка
 
-cd cd ./src/5_82-84/
+cd ./src/5_82-84/
 
 ./build.sh
