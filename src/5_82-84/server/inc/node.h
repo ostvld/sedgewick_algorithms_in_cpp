@@ -9,18 +9,18 @@ namespace Server {
 	class Node
 	{
 		public:
-			Node(std::shared_ptr <Item> it,
+			explicit Node(std::shared_ptr <Item> it,
 			std::shared_ptr <Node> left = nullptr,
 			std::shared_ptr <Node> right = nullptr);
 
-			Node( std::string name,
+			explicit Node( std::string name,
 			std::shared_ptr<Node> left = nullptr,
 			std::shared_ptr <Node> right = nullptr);
-			/// Посещение дерева
+			/// Посещение ноды дерева
 			void visit(std::shared_ptr <std::string> log);
-			/// Отдает левую дочерняя нода
+			/// Отдает левую дочернюю ноду
 			const std::shared_ptr<Node> left() const;
-			/// Отдает правую дочерняя нода
+			/// Отдает правую дочернюю ноду
 			const std::shared_ptr<Node> right() const;
 
 		protected:
