@@ -4,7 +4,7 @@
 
 sudo apt-get install gcc cmake doxygen
 
-1 Получение судмодулей
+1 Получение субмодулей
 
 git submodule init && git submodule update
 
